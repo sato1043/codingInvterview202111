@@ -16,8 +16,15 @@
     "build": "npm run pre:build && next build && next export"
   },
   "dependencies": {
+    "@emotion/cache": "^11.5.0",
+    "@emotion/react": "^11.5.0",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.5",
+    "@mui/material": "^5.0.0-rc.1",
     "@types/validator": "^13.6.3",
     "axios": "^0.21.1",
+    "clsx": "^1.1.1",
     "dayjs": "^1.10.5",
     "lodash": "^4.17.21",
     "next": "10.2.0",
