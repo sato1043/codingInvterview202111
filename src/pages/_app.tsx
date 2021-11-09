@@ -1,3 +1,5 @@
+import 'the-new-css-reset/css/reset.css';
+
 import { AppProps } from 'next/app';
 import React from 'react';
 import Head from 'next/head';
