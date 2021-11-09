@@ -25,7 +25,7 @@ type Game = {
   grid: Grid;
 };
 
-const plotLife = (game: Game, py: number , px: number, pattern: Grid): Game => {
+const plotLife = (game: Game, py: number, px: number, pattern: Grid): Game => {
   const grid = cloneDeep(game.grid);
   const plot = (y: number, x: number, life: Cell) => {
     if (0 <= y && y < game.ny) {
@@ -33,7 +33,7 @@ const plotLife = (game: Game, py: number , px: number, pattern: Grid): Game => {
         grid[y][x] = life;
       }
     }
-  }
+  };
   const h = pattern.length;
   const w = pattern[0].length;
   for (let y = 0; y < h; y++) {
@@ -42,7 +42,7 @@ const plotLife = (game: Game, py: number , px: number, pattern: Grid): Game => {
     }
   }
   return { ...game, grid };
-}
+};
 
 type plotFunc = (game: Game, py: number, px: number) => Game;
 
@@ -75,7 +75,7 @@ const plotOctagon: plotFunc = (game, py, px): Game =>
     [0,0,1,0,0,1,0,0],
   ]);
 
-const countAlive = (game: Game, y: number , x: number): number => {
+const countAlive = (game: Game, y: number, x: number): number => {
   let count = 0;
   const countUp = (y: number, x: number) => {
     if (0 <= y && y < game.ny) {
@@ -85,18 +85,18 @@ const countAlive = (game: Game, y: number , x: number): number => {
         }
       }
     }
-  }
+  };
   countUp(y - 1, x - 1);
-  countUp(y - 1, x   );
+  countUp(y - 1, x);
   countUp(y - 1, x + 1);
-  countUp(y   , x - 1);
+  countUp(y, x - 1);
   // countUp(y   , x    );
-  countUp(y   , x + 1);
+  countUp(y, x + 1);
   countUp(y + 1, x - 1);
-  countUp(y + 1, x   );
+  countUp(y + 1, x);
   countUp(y + 1, x + 1);
   return count;
-}
+};
 
 const advance = (game: Game): Game => {
   const grid = cloneDeep(game.grid);
@@ -131,9 +131,9 @@ const advance = (game: Game): Game => {
   }
 
   return { ...game, t: game.t + 1, grid };
-}
+};
 
-const initialGameState  = {
+const initialGameState = {
   ny: GRID_NY,
   nx: GRID_NX,
   t: 0,
@@ -150,8 +150,8 @@ const Home: React.VFC = () => {
   const [initialized, setInitialized] = React.useState<boolean>(false);
   React.useEffect(() => {
     if (initialized) return;
-    const cy = Math.floor(GRID_NY/2 + 0.5);
-    const cx = Math.floor(GRID_NX/2 + 0.5);
+    const cy = Math.floor(GRID_NY / 2 + 0.5);
+    const cx = Math.floor(GRID_NX / 2 + 0.5);
     let g = cloneDeep(initialGameState);
     g = plotBlinker(g, cy + 5, cx - 8);
     g = plotGlider(g, cy + 5, cx + 5);
@@ -164,7 +164,9 @@ const Home: React.VFC = () => {
   React.useEffect(() => {
     if (!game.grid) return;
     const timerId = setTimeout(() => setGame(advance(game)), game.tickMs);
-    return () => { clearTimeout(timerId) };
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [game]);
 
   return (
@@ -183,26 +185,27 @@ const Home: React.VFC = () => {
             <button
               type="button"
               className={styles.time_reset}
-              onClick={() => { setInitialized(false) }}
+              onClick={() => {
+                setInitialized(false);
+              }}
             >
               reset
             </button>
           </div>
           {game.grid.map((line, y) => (
             <div key={y} className={styles.line}>
-              {line.map((cell, x) => (
+              {line.map((cell, x) =>
+                // prettier-ignore
                 <span key={x} className={
                   styles.cell + " " + (cell
                       ? styles.cell__alive
                       : styles.cell__dead
                   )
-                }>
-            </span>
-              ))}
+                } />,
+              )}
             </div>
           ))}
         </div>
-
       </Container>
     </div>
   );
