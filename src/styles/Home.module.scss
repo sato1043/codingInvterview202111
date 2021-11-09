@@ -6,6 +6,12 @@ $cell-size: 1.5rem;
 
 .time {
   display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  &_reset {
+    margin-left: 1rem;
+  }
 }
 
 .line {
@@ -31,3 +37,4 @@ $cell-size: 1.5rem;
     background-color: white;
   }
 }
+

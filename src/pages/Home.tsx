@@ -133,16 +133,18 @@ const advance = (game: Game): Game => {
   return { ...game, t: game.t + 1, grid };
 }
 
+const initialGameState  = {
+  ny: GRID_NY,
+  nx: GRID_NX,
+  t: 0,
+  tickMs: 1000,
+  grid: [...Array(GRID_NY)].map(() => [...Array(GRID_NX)].fill(DEAD)),
+};
+
 const Home: React.VFC = () => {
   const { user } = useStore();
 
-  const [game, setGame] = React.useState<Game>({
-    ny: GRID_NY,
-    nx: GRID_NX,
-    t: 0,
-    tickMs: 1000,
-    grid: [...Array(GRID_NY)].map(() => [...Array(GRID_NX)].fill(DEAD)),
-  });
+  const [game, setGame] = React.useState<Game>(cloneDeep(initialGameState));
 
   // 一度だけブリンカーをプロット
   const [initialized, setInitialized] = React.useState<boolean>(false);
@@ -150,7 +152,7 @@ const Home: React.VFC = () => {
     if (initialized) return;
     const cy = Math.floor(GRID_NY/2 + 0.5);
     const cx = Math.floor(GRID_NX/2 + 0.5);
-    let g = cloneDeep(game);
+    let g = cloneDeep(initialGameState);
     g = plotBlinker(g, cy + 5, cx - 8);
     g = plotGlider(g, cy + 5, cx + 5);
     g = plotOctagon(g, 1, 5);
@@ -178,6 +180,13 @@ const Home: React.VFC = () => {
         <div className={styles.grid}>
           <div className={styles.time}>
             t = {game.t}
+            <button
+              type="button"
+              className={styles.time_reset}
+              onClick={() => { setInitialized(false) }}
+            >
+              reset
+            </button>
           </div>
           {game.grid.map((line, y) => (
             <div key={y} className={styles.line}>
