@@ -26,7 +26,8 @@
       {
         "name": "typescript-eslint-language-service"
       }
-    ]
+    ],
+    "incremental": true
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

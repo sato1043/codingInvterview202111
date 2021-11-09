@@ -84,4 +84,6 @@ $ npm ci
 
 or just run `npm ci` if others updates some with removing existing node_modules.
 
+- Vercel's [Upgrade GUide](https://nextjs.org/docs/upgrading)
+
 **EOF**

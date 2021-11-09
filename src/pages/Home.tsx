@@ -174,7 +174,7 @@ const Home: React.VFC = () => {
       <Container maxWidth="sm">
         <Box sx={{ my: 4 }}>
           <Typography variant="h4" component="h1" gutterBottom>
-            Next.js v11 example
+            Next.js v12 example
           </Typography>
           <div>user.fullName: {user ? user.fullName : '(...now loading)'}</div>
         </Box>
