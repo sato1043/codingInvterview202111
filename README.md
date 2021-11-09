@@ -71,4 +71,14 @@ $ npm start
 $ npm run pre:push
 ```
 
+## Update packages
+
+```
+$ npm outdated
+$ npm update [packageName]
+$ npm ci
+```
+
+or just run `npm ci` if others updates some with removing existing node_modules.
+
 **EOF**
