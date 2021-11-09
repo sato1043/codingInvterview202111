@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 
+import mockLink from '../../__mocks__/components/Link';
 import { User } from '../../src/domain';
 import Home from '../../src/pages/Home';
 import { user1 } from '../fixtures';
@@ -21,6 +22,8 @@ jest.mock('../../src/store', () => ({
   __esModule: true,
   default: () => mockStore,
 }));
+
+jest.mock('../../src/components/Link', () => mockLink);
 
 describe('pages/Home', () => {
   beforeEach(() => {

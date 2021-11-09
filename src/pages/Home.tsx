@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import cloneDeep from 'lodash/cloneDeep';
 import React from 'react';
 
+import Link from '../components/Link';
 import useStore from '../store';
 import styles from '../styles/Home.module.scss';
 
@@ -175,7 +176,16 @@ const Home: React.VFC = () => {
           <Typography variant="h4" component="h1" gutterBottom>
             Next.js v12 example
           </Typography>
-          <div>user.fullName: {user ? user.fullName : '(...now loading)'}</div>
+          <Typography variant="h6" component="h5" gutterBottom>
+            user.fullName: {user ? user.fullName : '(...now loading)'}
+            <Link
+              href="https://www.updater.cc"
+              color="secondary"
+              style={{ marginLeft: '2rem' }}
+            >
+              and our website.
+            </Link>
+          </Typography>
         </Box>
 
         <div className={styles.grid}>
