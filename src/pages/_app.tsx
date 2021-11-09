@@ -1,4 +1,8 @@
 import 'the-new-css-reset/css/reset.css';
+import '@fontsource/noto-sans-jp/300.css';
+import '@fontsource/noto-sans-jp/400.css';
+import '@fontsource/noto-sans-jp/500.css';
+import '@fontsource/noto-sans-jp/700.css';
 
 import React from 'react';
 
