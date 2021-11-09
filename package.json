@@ -57,6 +57,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jest": "^24.7.0",
     "eslint-plugin-jest-dom": "^3.9.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unused-imports": "^1.1.5",
@@ -89,28 +90,12 @@
       "src/utils/$path.ts",
       "out"
     ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:react/recommended",
-      "plugin:import/errors",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "import",
-      "unused-imports",
-      "react",
-      "react-hooks",
-      "@emotion"
-    ],
-    "parser": "@typescript-eslint/parser",
     "env": {
       "browser": true,
       "es2020": true,
       "node": true
     },
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": 12,
       "ecmaFeatures": {
@@ -118,6 +103,24 @@
       },
       "sourceType": "module"
     },
+    "plugins": [
+      "@typescript-eslint",
+      "import",
+      "unused-imports",
+      "react",
+      "react-hooks",
+      "jsx-a11y",
+      "@emotion"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:react/recommended",
+      "plugin:import/errors",
+      "plugin:jsx-a11y/recommended",
+      "prettier"
+    ],
     "settings": {
       "node": {
         "tryExtensions": [
@@ -217,6 +220,8 @@
         }
       ],
       "unused-imports/no-unused-imports-ts": 2,
+      "jsx-a11y/alt-text": 1,
+      "jsx-a11y/aria-role": 1,
       "@emotion/jsx-import": 2,
       "@emotion/pkg-renaming": 2
     },
