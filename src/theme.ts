@@ -1,6 +1,6 @@
 import createCache, { EmotionCache } from '@emotion/cache';
-import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
 
 export function createEmotionCache(): EmotionCache {
   return createCache({ key: 'css' });

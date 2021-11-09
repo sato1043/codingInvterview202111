@@ -4,15 +4,15 @@ import '@fontsource/noto-sans-jp/400.css';
 import '@fontsource/noto-sans-jp/500.css';
 import '@fontsource/noto-sans-jp/700.css';
 
-import React from 'react';
-
+import { EmotionCache } from '@emotion/cache';
+import { CacheProvider } from '@emotion/react';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import React from 'react';
 
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme, { createEmotionCache } from '../theme';
+import theme, { createEmotionCache } from '../theme'; // eslint-disable-line import/order
 const clientSideEmotionCache = createEmotionCache();
 
 import { APP_NAME } from '../constants';

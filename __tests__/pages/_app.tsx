@@ -1,12 +1,14 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import App from '../../src/pages/_app';
+import React from 'react';
+
+import { User } from '../../src/domain';
 import Home from '../../src/pages/Home';
+import App from '../../src/pages/_app';
 
 jest.mock('next/dist/client/router', () => require('next-router-mock'));
-import singletonRouter, { Router } from 'next/router';
+import singletonRouter, { Router } from 'next/router'; // eslint-disable-line import/order
+
 import { user1 } from '../fixtures';
-import { User } from '../../src/domain';
 const mockRouter = singletonRouter as unknown as Router;
 
 const mockStoreWithoutStoreReady = {

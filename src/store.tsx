@@ -1,12 +1,13 @@
+import { AxiosError } from 'axios';
 import _ from 'lodash';
 import React, { PropsWithChildren } from 'react';
 import { actionCreatorFactory } from 'typescript-fsa';
 import { reducerWithoutInitialState } from 'typescript-fsa-reducers';
-import { APP_NAME } from './constants';
 
-import { User } from './domain';
-import { AxiosError } from 'axios';
 import { user1 } from '../__tests__/fixtures';
+
+import { APP_NAME } from './constants';
+import { User } from './domain';
 
 /**
  * store

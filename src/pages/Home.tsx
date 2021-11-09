@@ -1,12 +1,11 @@
-import React from 'react';
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import cloneDeep from 'lodash/cloneDeep';
-
-import styles from '../styles/Home.module.scss';
+import React from 'react';
 
 import useStore from '../store';
+import styles from '../styles/Home.module.scss';
 
 const GRID_NX = 20;
 const GRID_NY = 20;
