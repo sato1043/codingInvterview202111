@@ -163,8 +163,8 @@ const Home: React.VFC = () => {
   // ゲーム時間進行（tickMs毎にsetGameされて再レンダー）
   React.useEffect(() => {
     if (!game.grid) return;
-    const timerId = setInterval(() => setGame(advance(game)), game.tickMs);
-    return () => { clearInterval(timerId) };
+    const timerId = setTimeout(() => setGame(advance(game)), game.tickMs);
+    return () => { clearTimeout(timerId) };
   }, [game]);
 
   return (
