@@ -71,6 +71,9 @@ $ npm start
 $ npm run pre:push
 ```
 
+- Vercel's [Basic fetures / TypeScript](https://nextjs.org/docs/basic-features/typescript)
+- React MUI's [Next.js with TypeScript example](https://github.com/mui-org/material-ui/tree/master/examples/nextjs-with-typescript)
+
 ## Update packages
 
 ```
