@@ -6,6 +6,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import React from 'react';
 
 import Link from '../components/Link';
+import { ComponentWithGetLayout, wrapDefaultPageLayout } from '../layouts';
 import useStore from '../store';
 import styles from '../styles/Home.module.scss';
 
@@ -142,7 +143,7 @@ const initialGameState = {
   grid: [...Array(GRID_NY)].map(() => [...Array(GRID_NX)].fill(DEAD)),
 };
 
-const Home: React.VFC = () => {
+const Home: ComponentWithGetLayout = () => {
   const { user } = useStore();
 
   const [game, setGame] = React.useState<Game>(cloneDeep(initialGameState));
@@ -222,4 +223,4 @@ const Home: React.VFC = () => {
   );
 };
 
-export default Home;
+export default wrapDefaultPageLayout(Home, 'Home');

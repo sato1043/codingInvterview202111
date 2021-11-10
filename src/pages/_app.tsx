@@ -8,24 +8,25 @@ import { EmotionCache } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 
+import { APP_NAME } from '../constants';
+import useStore, { StoreProvider } from '../store';
 import theme, { createEmotionCache } from '../theme'; // eslint-disable-line import/order
 const clientSideEmotionCache = createEmotionCache();
 
-import { APP_NAME } from '../constants';
-import useStore, { StoreProvider } from '../store';
+import type { AppPropsWithGetLayout } from '../layouts';
 
 export default function MyApp(
-  props: AppProps & { emotionCache?: EmotionCache },
+  props: AppPropsWithGetLayout & { emotionCache?: EmotionCache },
 ): JSX.Element {
   const { emotionCache = clientSideEmotionCache } = props;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <title>{APP_NAME}</title>
+        <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
@@ -38,7 +39,7 @@ export default function MyApp(
   );
 }
 
-const AppImpl = ({ Component, pageProps }: AppProps): JSX.Element => {
+const AppImpl = ({ Component, pageProps }: AppPropsWithGetLayout) => {
   const store = useStore();
 
   React.useEffect(() => {
@@ -49,5 +50,6 @@ const AppImpl = ({ Component, pageProps }: AppProps): JSX.Element => {
     })();
   }, [store]);
 
-  return <Component {...pageProps} />;
+  const getLayout = Component.getLayout || ((page) => page);
+  return getLayout(<Component {...pageProps} />);
 };
