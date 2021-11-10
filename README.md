@@ -86,4 +86,11 @@ or just run `npm ci` if others updates some with removing existing node_modules.
 
 - Vercel's [Upgrade GUide](https://nextjs.org/docs/upgrading)
 
+## Debug with IntelliJ
+
+- npm start
+- add breakpoints
+- create run configuration of 'JavaScript Debug', specify http://localhost:3000 URL
+- Debug from IDE
+
 **EOF**

@@ -30,7 +30,9 @@ export default function MyApp(
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppImpl {...props} />
+        <StoreProvider>
+          <AppImpl {...props} />
+        </StoreProvider>
       </ThemeProvider>
     </CacheProvider>
   );
@@ -47,9 +49,5 @@ const AppImpl = ({ Component, pageProps }: AppProps): JSX.Element => {
     })();
   }, [store]);
 
-  return (
-    <StoreProvider>
-      <Component {...pageProps} />
-    </StoreProvider>
-  );
+  return <Component {...pageProps} />;
 };

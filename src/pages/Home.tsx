@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import cloneDeep from 'lodash/cloneDeep';
@@ -185,22 +186,23 @@ const Home: React.VFC = () => {
             >
               and our website.
             </Link>
+            <div className={styles.time}>
+              t = {game.t}
+              <span className={styles.time_reset}>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    setInitialized(false);
+                  }}
+                >
+                  reset
+                </Button>
+              </span>
+            </div>
           </Typography>
         </Box>
 
         <div className={styles.grid}>
-          <div className={styles.time}>
-            t = {game.t}
-            <button
-              type="button"
-              className={styles.time_reset}
-              onClick={() => {
-                setInitialized(false);
-              }}
-            >
-              reset
-            </button>
-          </div>
           {game.grid.map((line, y) => (
             <div key={y} className={styles.line}>
               {line.map((cell, x) =>
